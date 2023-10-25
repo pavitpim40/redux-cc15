@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import './Form.css';
 import { useDispatch } from 'react-redux';
 import { addNoteAction } from '../redux/actions/actionCreator';
+import { nanoid } from 'nanoid';
 
 const AddNotes = () => {
   const dispatch = useDispatch();
@@ -24,7 +25,12 @@ const AddNotes = () => {
     if (note.title === '' || note.content === '') {
       return alert('Please fill in the form');
     }
+    note.id = nanoid();
     dispatch(addNoteAction(note)); // dispatch(actionCreator())
+    setNote({
+      title: '',
+      content: '',
+    });
   };
 
   return (

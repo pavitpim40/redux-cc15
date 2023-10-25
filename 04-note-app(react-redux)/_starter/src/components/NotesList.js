@@ -1,16 +1,24 @@
 import React, { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux'; // store.subscribe()
+import { deleteNoteAction } from '../redux/actions/actionCreator';
 
 import './NotesList.css';
 
 const NotesList = () => {
-  const handleDelete = (id) => {};
+  const dispatch = useDispatch();
+  const notes = useSelector((state) => state.notes);
+
+  const handleDelete = (id) => {
+    // dispatch(deleteNoteAction(id))
+    dispatch(deleteNoteAction(id));
+  };
 
   return (
     <>
       <h1>Notes List</h1>
 
       <div className='item-container'>
-        {[].map((note) => (
+        {notes.map((note) => (
           <div className='item-content' key={note.id}>
             <h2>{note.title}</h2>
             <p>{note.content}</p>
