@@ -5,6 +5,7 @@ const store = configureStore({
   reducer: {
     // ชื่อ Store รู้จัก
     n1: noteReducer,
+    // a1:AuthReducer
   },
 });
 
